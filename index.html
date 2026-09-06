@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<div class="layout-container">
+  <aside id="side-pane">
+    <div class="search-container">
+      <input type="text" id="babel-search" placeholder="Search the library...">
+
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="redact-toggle">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">REDACT</span>
+      </div>
+    </div>
+
+    <nav id="quick-links">
+      {% for section in site.sections %}
+      <a href="#" data-index="{{ forloop.index0 }}" class="nav-link">{{ section.title }}</a>
+      {% endfor %}
+    </nav>
+  </aside>
+
+  <div class="main-viewport">
+    <button id="nav-left" class="nav-arrow">&larr;</button>
+
+    <main id="babel-display">
+      <header class="doc-header">
+        <div class="doc-meta"></div>
+        <div class="doc-key" id="page-key"></div>
+      </header>
+
+      <div id="display-content">
+      </div>
+    </main>
+
+    <button id="nav-right" class="nav-arrow">&rarr;</button>
+  </div>
+</div>
+
+<div id="data-store" style="display: none">
+  {% for section in site.sections %}
+  <div
+    class="stored-section"
+    data-title="{{ section.title | downcase }}"
+    data-index="{{ forloop.index0 }}"
+  >
+    {{ section.content | markdownify }}
+  </div>
+  {% endfor %}
+</div>

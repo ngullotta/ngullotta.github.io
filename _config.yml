@@ -1,0 +1,7 @@
+title: "#!"
+markdown: kramdown
+
+collections:
+  sections:
+    output: false
+    sort_by: path
